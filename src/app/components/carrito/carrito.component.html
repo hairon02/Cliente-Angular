@@ -1,0 +1,29 @@
+<nav>
+    <div class="nav-wrapper">
+        <a> Navbar del comprador</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a (click)="menu()">Principal</a></li>
+            <li><a (click)="transaccion1()">Transacciones</a></li>
+            <li><a (click)="biblioteca()">Biblioteca</a></li>
+            <li><a (click)="direccion()">Metodo de pago</a></li>
+            <li><a (click)="reembolso()">Reembolsos</a></li>
+            <li><a (click)="carrito1()"> <i class="material-icons">shopping_cart</i></a></li>
+
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    Carrito del comprador <br>
+    <br>
+    <table class="default" *ngIf="carrito != undefined">
+
+        <tr *ngFor="let carrito of carritos">
+            <td>Juego: {{carrito.titulo}}</td>
+            <td>Cantidad: {{carrito.cantidad}}</td>
+            <td><a (click)="eliminarCarro(carrito.id)"><i class="material-icons prefix ">delete</i></a></td>
+        </tr>
+    </table>
+    <a  (click)="comprar()">Comprar <i class="medium material-icons">attach_money </i></a>
+
+</div>

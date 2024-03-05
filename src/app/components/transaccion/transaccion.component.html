@@ -1,0 +1,63 @@
+<nav>
+  <div class="nav-wrapper">
+      <a href="#" class="brand-logo"> LOGO</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a (click)="menu()">Principal</a></li>
+            <li><a (click)="transaccion1()">Transacciones</a></li>
+            <li><a (click)="biblioteca()">Biblioteca</a></li>
+            <li><a (click)="direccion()">Metodo de pago</a></li>
+            <li><a (click)="reembolso1()">Reembolsos</a></li>
+            <li><a (click)="carrito()"> <i class="material-icons">shopping_cart</i></a></li>
+
+      </ul>
+  </div>
+</nav>
+
+<div class="container">
+    Historial de Transacciones de la cuenta
+    <br>
+<table class="default" *ngIf="transaccion != undefined">
+
+  <tr *ngFor="let transaccion of transacciones">
+    <td>Fecha Lanzamiento: {{transaccion.fecha_compra}}</td>   
+    <td>Titulo: {{transaccion.titulo}}</td>   
+    <td>Precio: {{transaccion.precio}}</td>   
+    <td>Cantidad: {{transaccion.cantidad}}</td> 
+    <td><a class="modal-trigger"  (click)="review(transaccion.id)" > <i class="material-icons">rate_review</i></a></td>
+    <td><a class="modal-trigger"  (click)="generarReembolso(transaccion.id)" > <i class="material-icons">account_balance_wallet</i></a></td>
+
+  </tr>
+
+</table>
+
+<div  id="modalReview" class="modal">
+      <div class="modal-content">
+        <h4>Actualizar Juego</h4>
+        <div class="row">
+          <div class="input-field col s12">
+            <label>Reseña </label><br>
+            <input   [(ngModel)]="transaccion.comentario" name="comentario" type="text" class="validate">
+          </div>
+          <label class="active">Calificación:</label>
+              <select [(ngModel)]="transaccion.calificacion" name="calificacion" class="browser-default">
+                <option value="" disabled selected>Opciones</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+          </div>  
+          <div class="modal-footer">
+            <a class="modal-close btn-flat">Cancelar</a>
+            <a class="btn" (click)="guardarReview()">Agregar</a>
+        </div>
+        </div>
+    </div>
+      
+    </div>

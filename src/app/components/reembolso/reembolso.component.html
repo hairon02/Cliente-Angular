@@ -1,0 +1,32 @@
+<nav>
+    <div class="nav-wrapper">
+        <a> Navbar del comprador</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a (click)="menu()">Principal</a></li>
+            <li><a (click)="transaccion()">Transacciones</a></li>
+            <li><a (click)="biblioteca()">Biblioteca</a></li>
+            <li><a (click)="direccion()">Metodo de pago</a></li>
+            <li><a (click)="reembolso1()">Reembolsos</a></li>
+            <li><a (click)="carrito()"> <i class="material-icons">shopping_cart</i></a></li>
+
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    Reembolsos del usuario
+
+    <br>
+    <br>
+    <br>
+    <table class="default" *ngIf="reembolso != undefined">
+
+        <tr *ngFor="let reembolso of reembolsos">
+
+            <td>Fecha de Reembolso: {{reembolso.fecha_reembolso}}</td>
+            <td>Titulo: {{reembolso.titulo}}</td>
+
+        </tr>
+
+    </table>
+</div>

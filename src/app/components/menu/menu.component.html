@@ -1,0 +1,108 @@
+<nav>
+    <div class="nav-wrapper">
+        <a> Navbar del comprador</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a (click)="menu()">Principal</a></li>
+          <li><a (click)="transaccion()">Transacciones</a></li>
+          <li><a (click)="biblioteca()">Biblioteca</a></li>
+          <li><a (click)="direccion()">Metodo de pago</a></li>
+          <li><a (click)="reembolso()">Reembolsos</a></li>
+          <li><a (click)="carrito1()"> <i class="material-icons">shopping_cart</i></a></li>
+        </ul>
+    </div>
+</nav>
+<div class="carousel carousel-slider center">
+    <div class="carousel-fixed-item center">
+    </div>
+    
+      <a class="carousel-item"><img src="../../assets/doom.jpeg"></a>
+      <a class="carousel-item"><img src="../../assets/minecraft.png"></a>
+
+</div>   
+<br>
+
+  <div class="container">
+      <p>AQUI MUESTRA LOS JUEGOS EN VENTA</p>
+
+      <div class="container">
+        <table class="default" *ngIf="juegos != undefined">
+
+          <tr *ngFor="let juego of juegos">
+            <td>{{juego.titulo}}</td>
+            <td><a class="modal-trigger"  (click)="mostrarJuego(juego.id)" > <i class="material-icons">remove_red_eye</i></a></td>
+            <td><a class="modal-trigger"  (click)="agregarCantidad(juego.id)" > <i class="material-icons">add</i></a></td>
+
+          </tr>
+        
+        </table>
+      </div>
+
+  </div>
+
+  <div  id="modalMostrarJuego" class="modal">
+    <div class="modal-content">
+      <h4>Juego</h4>
+      <div class="row">
+        <div class="input-field col s12">
+          <label>Titulo de la Entrega </label><br>
+          <input [(ngModel)]="juego.titulo" name="titulo" disabled value="I am not editable" id="disabled" type="text" class="validate">
+          <label for="disabled"></label>
+        </div>
+        <div class="input-field col s12">
+          <label>Descripcion </label><br>
+          <input [(ngModel)]="juego.descripcion" name="descripcion" disabled value="I am not editable" id="disabled" type="text" class="validate">
+          <label for="disabled"></label>
+        </div>
+        <div class="input-field col s12">
+          <label>Genero </label><br>
+          <input [(ngModel)]="juego.genero" name="genero" disabled value="I am not editable" id="disabled" type="text" class="validate">
+          <label for="disabled"></label>
+        </div>
+        <div class="input-field col s6">
+          <label>Fecha de lanzamiento </label><br>
+          <input [(ngModel)]="juego.fecha_lanzamiento" name="fecha_lanzamiento" disabled value="I am not editable" id="disabled" type="text" class="validate">
+          <label for="disabled"></label>
+        </div>
+        <div class="input-field col s6">
+          <label>Precio </label><br>
+          <input [(ngModel)]="juego.precio" name="precio" disabled value="I am not editable" id="disabled" type="text" class="validate">
+          <label for="disabled"></label>
+        </div>
+        <div class="input-field col s6">
+          <label>Estado del juego </label><br>
+          <input [(ngModel)]="juego.estado" name="estado" disabled value="I am not editable" id="disabled" type="text" class="validate">
+          <label for="disabled"></label>
+        </div>
+        <div class="input-field col s6">
+          <label>id del usuario </label><br>
+          <input [(ngModel)]="juego.id_usuario" name="id_usuario" disabled value="I am not editable" id="disabled" type="text" class="validate">
+          <label for="disabled"></label>
+        </div>
+      </div>
+      <div class="row">
+    </div>
+  </div>
+</div>
+  <div  id="modalAgregar" class="modal">
+    <div class="modal-content">
+      <h4>Juego</h4>
+      <div class="row">
+        <div class="input-field col s6">
+          <label>Titulo </label><br>
+          <input [(ngModel)]="juego.titulo" name="titulo" disabled value="I am not editable" id="disabled" type="text" class="validate">
+          <label for="disabled"></label>
+        </div>
+        <div class="input-field col s12">
+          <label>Cantidad </label><br>
+          <input   [(ngModel)]="carrito.cantidad" name="cantidad" type="text" class="validate">
+        </div>
+      </div>
+      <div class="row">
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close btn-flat">Cancelar</a>
+      <a class="btn" (click)="insertarCarrito()">Agregar</a>
+  </div>
+  </div>
+</div>
+  

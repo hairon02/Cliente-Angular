@@ -1,0 +1,96 @@
+
+  
+    <div class="container">
+    
+    <table class="default" *ngIf="usuarios != undefined">
+
+      <tr *ngFor="let usuario of usuarios">
+    
+        <td>{{usuario.nombre}}</td>
+    
+        <td>{{usuario.correo}}</td>
+      
+        <td><a (click)="eliminarUsuario(usuario.id)"><i class="material-icons prefix">delete</i></a></td>
+  
+        <td><a class="modal-trigger"  (click)="actualizarUsuario(usuario.id)" > <i class="material-icons">edit</i></a></td>
+
+        <td><a class="modal-trigger"  (click)="mostrarUsuario(usuario.id)" > <i class="material-icons">remove_red_eye
+        </i></a></td>
+
+      </tr>
+    
+     
+    
+    </table>
+    
+    <div  id="modalModificarUsuario" class="modal">
+      <div class="modal-content">
+        <h4>Actualizar Usuario</h4>
+        <div class="row">
+          <div class="input-field col s12">
+            <label>Nombre </label><br>
+            <input   [(ngModel)]="usuario.nombre" name="nombre"  type="text" class="validate">
+          </div>
+          <div class="input-field col s12">
+            <label>Nickname </label><br>
+            <input [(ngModel)]="usuario.nickname"  nombre="nickname" type="text" class="validate">
+          </div>
+          <div class="input-field col s6">
+            <label>Correo </label><br>
+            <input  [(ngModel)]="usuario.correo" nombre="correo" type="text" class="validate">
+          </div>
+          <div class="input-field col s6">
+            <label>Contraseña </label><br>
+            <input  [(ngModel)]="usuario.password" nombre="password" type="text" class="validate">
+          </div>
+          <div class="input-field col s6">
+            <label>id rol </label><br>
+            <input  [(ngModel)]="usuario.id_rol" nombre="id_rol" type="text" class="validate">
+          </div>
+        </div>
+        <div class="row">
+      </div>
+    </div>
+      <div class="modal-footer">
+          <a class="modal-close btn-flat">Cancelar</a>
+          <a class="btn" (click)="guardarActualizarUsuario()">Modificar</a>
+      </div>
+    </div>
+
+    <div  id="modalMostrarUsuario" class="modal">
+      <div class="modal-content">
+        <h4>Usuario</h4>
+        <div class="row">
+          <div class="input-field col s12">
+            <label>Nombre </label><br>
+            <input [(ngModel)]="usuario.nombre" nombre="nombre" disabled value="I am not editable" id="disabled" type="text" class="validate">
+            <label for="disabled"></label>
+          </div>
+          <div class="input-field col s12">
+            <label>Nickname </label><br>
+            <input [(ngModel)]="usuario.nickname" nombre="nickname" disabled value="I am not editable" id="disabled" type="text" class="validate">
+            <label for="disabled"></label>
+          </div>
+          <div class="input-field col s6">
+            <label>Correo </label><br>
+            <input [(ngModel)]="usuario.correo" nombre="correo" disabled value="I am not editable" id="disabled" type="text" class="validate">
+            <label for="disabled"></label>
+          </div>
+          <div class="input-field col s6">
+            <label>Contraseña </label><br>
+            <input [(ngModel)]="usuario.password" nombre="password" disabled value="I am not editable" id="disabled" type="text" class="validate">
+            <label for="disabled"></label>
+          </div>
+          <div class="input-field col s6">
+            <label>id rol </label><br>
+            <input [(ngModel)]="usuario.id_rol" nombre="id_rol" disabled value="I am not editable" id="disabled" type="text" class="validate">
+            <label for="disabled"></label>
+          </div>
+        </div>
+        <div class="row">
+      </div>
+    </div>
+      
+    </div>
+
+  </div>

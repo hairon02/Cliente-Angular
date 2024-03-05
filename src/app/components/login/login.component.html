@@ -1,0 +1,48 @@
+<nav>
+    <div class="nav-wrapper">
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="bodyLogin">
+    <div class="container">
+        <div class="row">
+            <div class="offset-l2 loginDiv">
+                <div class="row loginContainer">
+                    <div class="col s12 m6 l6">
+                        <div class="col s11 offset-s1">
+                        </div>
+                    </div>
+                    <div class="col s12 m5 l5 offset-l1 offset-m1">
+                        <div class="loginTitulo">
+                            <h5>Iniciar Sesión</h5>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 customInput">
+                                <i class="material-icons prefix">email</i>
+                                <input class="browser-default" type="email" [(ngModel)]="usuario.correo" name="email"
+                                    id="email" placeholder="correo" autocomplete="off">
+                            </div>
+                            <div class="col s12 customInput">
+                                <i class="material-icons prefix">vpn_key</i>
+                                <input class="browser-default" type="password" name="password" id="password"
+                                    [(ngModel)]="usuario.password" placeholder="password" autocomplete="off">
+  
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button (click)="logueo()" class="btn col l12 s12 m12 btnLogin ">LOGIN</button>
+                            <div class="col s12 m12 l12 divOlvide">
+                                <a href="">Olvidé mi contraseña!</a>
+                            </div>
+                        </div>
+                        <p>Usuario nuevo? Registrate</p>
+                        <button (click)="registro()" class="btn col l12 s12 m12 btnLogin ">REGISTRARSE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

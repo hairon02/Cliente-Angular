@@ -1,0 +1,205 @@
+<nav>
+  <div class="nav-wrapper">
+      <a> navbar de vendedor</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a (click)="enviarjuego()">Mis Juegos</a></li>
+
+      </ul>
+  </div>
+</nav>
+    <div class="container">
+        <br>
+        <a class="btn-floating btn-large waves-effect waves-light red" (click)="nuevoProducto()"><i class="material-icons">add</i></a>
+        <br>
+    <table class="default" *ngIf="juegos != undefined">
+
+      <tr *ngFor="let juego of juegos">
+    
+        <td>{{juego.titulo}}</td>
+    
+      
+        <td><a (click)="eliminarJuego(juego.id)"><i class="material-icons prefix red darken-1">delete</i></a></td>
+  
+        <td><a class="modal-trigger"  (click)="actualizarJuego(juego.id)" > <i class="material-icons">edit</i></a></td>
+
+        <td><a class="modal-trigger"  (click)="mostrarJuego(juego.id)" > <i class="material-icons">remove_red_eye
+        </i></a></td>
+
+      </tr>
+    
+     
+    
+    </table>
+    <a class="modal-trigger"  (click)="ganancias()" >Mostrar Ganancias <i class="medium material-icons">attach_money </i></a>
+    
+    <div  id="modalModificarJuego" class="modal">
+      <div class="modal-content">
+        <h4>Actualizar Juego</h4>
+        <div class="row">
+          <div class="input-field col s12">
+            <label>Titulo de la entrega </label><br>
+            <input   [(ngModel)]="juego.titulo" name="titulo" type="text" class="validate">
+          </div>
+          <div class="input-field col s12">
+            <label>Descripcion </label><br>
+            <input [(ngModel)]="juego.descripcion" name="descripcion" type="text" class="validate">
+          </div>
+          <div class="row col s12">
+            <label class="active">Genero</label>
+              <select [(ngModel)]="juego.genero" name="genero" class="browser-default">
+                <option value="" disabled selected>Opciones</option>
+                <option value="accion">accion</option>
+                <option value="aventura">aventura</option>
+                <option value="estrategia">estrategia</option>
+                <option value="deportes">deportes</option>
+                <option value="arcade">arcade</option>
+              </select>
+            <label>Materialize Select</label>
+          </div>          
+          <div class="input-field col s12">
+            <label class="active">Fecha de lanzamiento</label><br>
+            <input [(ngModel)]="juego.fecha_lanzamiento" type="date" id="fechaJuego" #fechaD
+            (change)="actualizarFecha(fechaD.value)" class="datepicker">
+          </div>
+          <div class="input-field col s6">
+            <label>Precio </label><br>
+            <input  [(ngModel)]="juego.precio" name="precio" type="text" class="validate">
+          </div>
+          <div class="row col s12">
+            <label class="active">Estado</label>
+              <select [(ngModel)]="juego.estado" name="estado" class="browser-default">
+                <option value="" disabled selected>Opciones</option>
+                <option value="alta">alta</option>
+                <option value="baja">baja</option>
+              </select>
+            <label>Materialize Select</label>
+          </div>   
+          <div class="input-field col s6">
+            <label>id del usuario </label><br>
+            <input [(ngModel)]="juego.id_usuario" name="id_usuario" disabled value="I am not editable" id="disabled" type="text" class="validate">
+            <label for="disabled"></label>
+          </div>
+        </div>
+        <div class="row">
+      </div>
+    </div>
+      <div class="modal-footer">
+          <a class="modal-close btn-flat">Cancelar</a>
+          <a class="btn" (click)="guardarActualizarJuego()">Modificar</a>
+      </div>
+    </div>
+
+    <div  id="modalMostrarJuego" class="modal">
+      <div class="modal-content">
+        <h4>Juego</h4>
+        <div class="row">
+          <div class="input-field col s12">
+            <label>Titulo de la Entrega </label><br>
+            <input [(ngModel)]="juego.titulo" name="titulo" disabled value="I am not editable" id="disabled" type="text" class="validate">
+            <label for="disabled"></label>
+          </div>
+          <div class="input-field col s12">
+            <label>Descripcion </label><br>
+            <input [(ngModel)]="juego.descripcion" name="descripcion" disabled value="I am not editable" id="disabled" type="text" class="validate">
+            <label for="disabled"></label>
+          </div>
+          <div class="input-field col s12">
+            <label>Genero </label><br>
+            <input [(ngModel)]="juego.genero" name="genero" disabled value="I am not editable" id="disabled" type="text" class="validate">
+            <label for="disabled"></label>
+          </div>
+          <div class="input-field col s6">
+            <label>Fecha de lanzamiento </label><br>
+            <input [(ngModel)]="juego.fecha_lanzamiento" name="fecha_lanzamiento" disabled value="I am not editable" id="disabled" type="text" class="validate">
+            <label for="disabled"></label>
+          </div>
+          <div class="input-field col s6">
+            <label>Precio </label><br>
+            <input [(ngModel)]="juego.precio" name="precio" disabled value="I am not editable" id="disabled" type="text" class="validate">
+            <label for="disabled"></label>
+          </div>
+          <div class="input-field col s6">
+            <label>Estado del juego </label><br>
+            <input [(ngModel)]="juego.estado" name="estado" disabled value="I am not editable" id="disabled" type="text" class="validate">
+            <label for="disabled"></label>
+          </div>
+          <div class="input-field col s6">
+            <label>id del usuario </label><br>
+            <input [(ngModel)]="juego.id_usuario" name="id_usuario" disabled value="I am not editable" id="disabled" type="text" class="validate">
+            <label for="disabled"></label>
+          </div>
+        </div>
+        <div class="row">
+      </div>
+    </div>
+      
+    </div>
+    <div  id="modalcrearJuego" class="modal">
+        <div class="modal-content">
+          <h4>Crear Juego</h4>
+          <div class="row">
+            <div class="input-field col s12">
+              <label>Titulo de la entrega </label><br>
+            <input   [(ngModel)]="juego.titulo" name="titulo" type="text" class="validate">
+          </div>
+          <div class="input-field col s12">
+            <label>Descripcion </label><br>
+            <input [(ngModel)]="juego.descripcion" name="descripcion" type="text" class="validate">
+          </div>
+          <div class="row col s12">
+            <label class="active">Genero</label>
+              <select [(ngModel)]="juego.genero" name="genero" class="browser-default">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="accion">accion</option>
+                <option value="aventura">aventura</option>
+                <option value="estrategia">estrategia</option>
+                <option value="deportes">deportes</option>
+                <option value="arcade">arcade</option>
+              </select>
+            <label>Materialize Select</label>
+          </div>
+          <div class="input-field col s12">
+            <label class="active">Fecha de lanzamiento</label><br>
+            <input [(ngModel)]="juego.fecha_lanzamiento" type="date" id="fechaJuego" #fechaD
+            (change)="actualizarFecha(fechaD.value)" class="datepicker">
+          </div>
+          <div class="input-field col s6">
+            <label>Precio </label><br>
+            <input  [(ngModel)]="juego.precio" name="precio" type="text" class="validate">
+          </div>
+          <div class="row col s12">
+            <label class="active">Estado</label>
+              <select [(ngModel)]="juego.estado" name="estado" class="browser-default">
+                <option value="" disabled selected>Opciones</option>
+                <option value="alta">alta</option>
+                <option value="baja">baja</option>
+              </select>
+            <label>Materialize Select</label>
+          </div>   
+        
+          </div>
+          <div class="row">
+        </div>
+      </div>
+        <div class="modal-footer">
+            <a class="modal-close btn-flat">Cancelar</a>
+            <a class="btn" (click)="guardarCrearJuego()">Agregar</a>
+        </div>
+      </div>
+
+  </div>
+  <div  id="modalMostrarGanancias" class="modal">
+    <div class="modal-content">
+      <h4>TOTAL</h4>
+      <div class="row">
+        <div class="input-field col s12">
+          <label>Ganancias </label><br>
+          <input [(ngModel)]="juego.ganancia_total" name="ganancia_total" disabled value="I am not editable" id="disabled" type="text" class="validate">
+            <label for="disabled"></label>
+          <label ></label>
+        </div>
+        
+      </div>
+      <div class="row">
+    </div>
+  </div>

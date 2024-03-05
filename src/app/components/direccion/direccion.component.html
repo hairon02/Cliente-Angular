@@ -1,0 +1,81 @@
+<nav>
+    <div class="nav-wrapper">
+      <a> Navbar del comprador</a>
+
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a (click)="menu()">Principal</a></li>
+          <li><a (click)="transaccion()">Transacciones</a></li>
+          <li><a (click)="biblioteca()">Biblioteca</a></li>
+          <li><a (click)="direccion()">Metodo de pago</a></li>
+          <li><a (click)="reembolso()">Reembolsos</a></li>
+          <li><a (click)="carrito()"> <i class="material-icons">shopping_cart</i></a></li>
+
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    Metodos de pago del usuario
+
+    <br>
+        <a class="btn-floating btn-large waves-effect waves-light red" (click)="nuevoMetodo()"><i class="material-icons">add</i></a>
+        <br>
+    <br>
+    <table class="default" *ngIf="pago != undefined">
+
+        <tr *ngFor="let pago of pagos">
+
+            <td>Dirección: {{pago.direccion}}</td>
+            <td>Número de Tarjeta: {{pago.num_tarjeta}}</td>
+
+            <td><a (click)="eliminarMetodo(pago.id)"><i class="material-icons prefix">delete</i></a></td>
+            <td><a class="modal-trigger"  (click)="actualizarMetodo(pago.id)" > <i class="material-icons">edit</i></a></td>
+
+        </tr>
+
+    </table>
+</div>
+
+<div  id="modalModificarMetodo" class="modal">
+    <div class="modal-content">
+      <h4>Actualizar método</h4>
+      <div class="row">
+        <div class="input-field col s12">
+          <label>Dirección </label><br>
+          <input   [(ngModel)]="pago.direccion" name="direccion" type="text" class="validate">
+        </div>
+        <div class="input-field col s12">
+          <label>Número tarjeta </label><br>
+          <input [(ngModel)]="pago.num_tarjeta" name="num_tarjeta" type="text" class="validate">
+        </div>
+      </div>
+      <div class="row">
+    </div>
+  </div>
+    <div class="modal-footer">
+        <a class="modal-close btn-flat">Cancelar</a>
+        <a class="btn" (click)="guardarActualizarMetodo()">Modificar</a>
+    </div>
+  </div>
+
+  <div  id="modalCrearMetodo" class="modal">
+    <div class="modal-content">
+      <h4>Actualizar método</h4>
+      <div class="row">
+        <div class="input-field col s12">
+          <label>Dirección </label><br>
+          <input   [(ngModel)]="pago.direccion" name="direccion" type="text" class="validate">
+        </div>
+        <div class="input-field col s12">
+          <label>Número tarjeta </label><br>
+          <input [(ngModel)]="pago.num_tarjeta" name="num_tarjeta" type="text" class="validate">
+        </div>
+      </div>
+      <div class="row">
+    </div>
+  </div>
+    <div class="modal-footer">
+        <a class="modal-close btn-flat">Cancelar</a>
+        <a class="btn" (click)="guardarCrearMetodo()">Crear</a>
+    </div>
+  </div>
